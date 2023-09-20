@@ -54,9 +54,9 @@ jobs:
           docker
       - name: docker build
         run: |
-          docker build . -t demo-kotlin1.0
+          docker build . -t rtmabiola/demo-kotlin1.0
           docker images -a
       - name: docker login
         run: echo ${{ secrets.dockerpasswd }} | docker login -u ${{ secrets.dockeruser }} --password-stdin
       - name: docker image push
-        run: docker push demo-kotlin1.0
+        run: docker push rtmabiola/demo-kotlin1.0
