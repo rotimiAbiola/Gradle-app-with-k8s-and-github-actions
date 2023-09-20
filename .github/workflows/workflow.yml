@@ -53,5 +53,9 @@ jobs:
           docker -v
           docker
       - name: docker build
-        run: docker build . -t demo-kotlin1.0
+        run: |
+          docker build . -t demo-kotlin1.0
+          docker images -a
+      - name: docker login
+        run: docker login -u {{ secrets.dockeruser }} -p {{ secrets.dockerpasswd }}
 
