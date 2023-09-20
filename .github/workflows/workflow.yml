@@ -46,4 +46,10 @@ jobs:
         run: java -version 
       - name: build with gradle
         run: gradle build
+      - name: build with gradlew
+        run: ./gradlew build
+      - name: docker version
+        run: |
+          docker -v
+          docker
 
