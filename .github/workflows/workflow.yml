@@ -58,4 +58,5 @@ jobs:
           docker images -a
       - name: docker login
         run: echo ${{ secrets.dockerpasswd }} | docker login -u ${{ secrets.dockeruser }} --password-stdin
-
+      - name: docker image push
+        run: docker push demo-kotlin1.0
