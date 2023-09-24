@@ -10,10 +10,10 @@ jobs:
     runs-on: ubuntu-latest
     name: 'Terraform'
 
-    defaults:
-      run:
-        shell: bash
-        working-directory: terraform
+    # defaults:
+    #   run:
+    #     shell: bash
+    #     working-directory: terraform
 
     steps:
     - name: checkout repository
@@ -26,3 +26,9 @@ jobs:
         mv terraform /usr/local/bin
         terraform --version
         rm terraform.zip
+      
+    - name: 'Install TFLint'
+      run: |
+        wget https://github.com/terraform-linters/tflint/releases/download/v0.44.1/tflint_linux_amd64.zip
+        unzip tflint_linux_amd64
+        mv tflint /usr/local/bin
