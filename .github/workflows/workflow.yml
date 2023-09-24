@@ -52,6 +52,9 @@ jobs:
       - run: |
             kubectl create namespace githubac
 
+      - run: |
+           kubectl apply -f pod.yml
+           
       - name: Setup JDK 17
         uses: actions/setup-java@v3
         with:
