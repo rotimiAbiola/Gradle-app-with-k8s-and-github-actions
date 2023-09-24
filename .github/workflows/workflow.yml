@@ -37,11 +37,21 @@ jobs:
       - name: Run a new script
         run: ls -la
 
-      - name: Login to Azure
+      - name: Log in to Azure
         uses: azure/login@v1
         with:
           creds: '{"clientId":"${{ secrets.CLIENT_ID }}","clientSecret":"${{ secrets.CLIENT_SECRET }}","subscriptionId":"${{ secrets.SUBSCRIPTION_ID }}","tenantId":"${{ secrets.TENANT_ID }}"}'
-      
+        # app client Id must have contributor role
+
+      - uses: azure/aks-set-context@v1
+        with:
+          creds: '{"clientId":"${{ secrets.CLIENT_ID }}","clientSecret":"${{ secrets.CLIENT_SECRET }}","subscriptionId":"${{ secrets.SUBSCRIPTION_ID }}","tenantId":"${{ secrets.TENANT_ID }}"}'
+          cluster-name: github-actions-cluster
+          resource-group: AltSchool
+
+      - run: |
+            kubectl create namespace githubac
+
       - name: Setup JDK 17
         uses: actions/setup-java@v3
         with:
