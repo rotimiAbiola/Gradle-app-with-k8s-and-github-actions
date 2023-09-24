@@ -1,0 +1,28 @@
+name: 'Terraform'
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  terraform:
+    runs-on: ubuntu-latest
+    name: 'Terraform'
+
+    defaults:
+      run:
+        shell: bash
+        working-directory: terraform
+
+    steps:
+    - name: checkout repository
+      uses: actions/checkout@v2
+
+    - name: 'Install pre-reqs'
+      run: |
+        curl -SL "https://releases.hashicorp.com/terraform/1.5.7/terraform_1.5.7_linux_amd64.zip" --output terraform.zip
+        unzip "terraform.zip"
+        mv terraform /usr/local/bin
+        terraform --version
+        rm terraform.zip
