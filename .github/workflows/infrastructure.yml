@@ -13,7 +13,7 @@ jobs:
       ARM_CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
       ARM_SUBSCRIPTION_ID: ${{ secrets.SUBSCRIPTION_ID }}
       ARM_TENANT_ID: ${{ secrets.TENANT_ID }}
-      tf_actions_working_dir: ./terrraform
+      tf_actions_working_dir: terrraform
     runs-on: ubuntu-latest
 
 
